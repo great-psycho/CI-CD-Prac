@@ -17,10 +17,10 @@ jobs:
     - name: Execute Gradle build
       run: ./gradlew build -x test
     
-    - uses: actions/upload-artifact@v3
-      with:
-        name: jar-file-artifact
-        path: ./build/libs/*-SNAPSHOT.jar
+#     - uses: actions/upload-artifact@v3
+#       with:
+#         name: jar-file-artifact
+#         path: ./build/libs/*-SNAPSHOT.jar
 
   docker:
     needs: gradle
@@ -33,10 +33,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v3.0.2
-      with:
-        name: jar-file-artifact
+#     - name: Download a Build Artifact
+#       uses: actions/download-artifact@v3.0.2
+#       with:
+#         name: jar-file-artifact
         
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
