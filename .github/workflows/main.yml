@@ -37,7 +37,8 @@ jobs:
 #       uses: actions/download-artifact@v3.0.2
 #       with:
 #         name: jar-file-artifact
-        
+    - run: ls -ll
+    
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
       
