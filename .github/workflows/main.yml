@@ -1,9 +1,17 @@
-name: helloTest
+name: Build Gradle
 on: workflow_dispatch
-
 jobs:
-  run-01:
+  gradle:
     runs-on: ubuntu-latest
     steps:
-      - name: step-01
-        run: echo "Hello!"
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 11
+        
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v2.4.2
+    
+    - name: Execute Gradle build
+      run: ./gradlew build -x test
