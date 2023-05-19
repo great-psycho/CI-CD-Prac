@@ -16,7 +16,7 @@ public class PracController {
 
     @GetMapping("/hello")
     public String hi(){
-        return "helloWorld!";
+        return "Go to hell";
     }
 
     @GetMapping("/hi")
