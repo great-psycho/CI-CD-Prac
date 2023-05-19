@@ -1,5 +1,9 @@
 name: Build Gradle
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+    - main
 
 jobs:
   gradle:
@@ -58,3 +62,17 @@ jobs:
         context: .
         push: true
         tags: ghcr.io/${{ github.repository }}:latest
+        
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        script: sh deploy.sh
+    
